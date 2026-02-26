@@ -5,7 +5,7 @@ This module extracts the actual DDL from the PostgreSQL database,
 making the database itself the single source of truth for schema.
 
 TABLE DISCOVERY:
-Table inclusion/exclusion is config-driven via datasets/snap/config.yaml:
+Table inclusion/exclusion is config-driven via datasets/data/config.yaml:
 - include_table_prefixes: ["*"] includes all tables (default), or specify
   prefixes like ["ref_", "md_"] to filter by prefix
 - exclude_tables: Always excluded (Chainlit internals, migrations, etc.)
@@ -112,7 +112,7 @@ def _load_table_discovery_config() -> dict:
 
 # System schemas to exclude from dataset discovery
 SYSTEM_SCHEMAS = [
-    "app",  # SnapAnalyst system data
+    "app",  # DataPilot system data
     "public",  # Reserved for SNAP QC (handled separately)
     "pg_catalog",  # PostgreSQL system catalog
     "information_schema",  # SQL standard system views
@@ -125,7 +125,7 @@ def discover_tables_and_views(schema_name: str = "public", db_engine: Engine = N
     """
     Dynamically discover tables and views using config-driven filters.
 
-    Filters are loaded from datasets/snap/config.yaml:
+    Filters are loaded from datasets/data/config.yaml:
     - include_table_prefixes: ["*"] includes all tables, or list specific
       prefixes like ["ref_", "md_"] to restrict inclusion
     - exclude_tables: Table names always excluded (Chainlit, migrations)

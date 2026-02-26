@@ -1,4 +1,4 @@
-# SnapAnalyst Dockerfile
+# DataPilot Dockerfile
 # Multi-stage build for FastAPI Backend + Chainlit UI
 
 FROM python:3.11-slim AS base

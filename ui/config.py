@@ -21,10 +21,10 @@ def _get_personas() -> tuple[str, str]:
         ds = get_active_dataset()
         if ds:
             personas = ds.get_personas()
-            return personas.get("app", "SnapAnalyst"), personas.get("ai", "SnapAnalyst AI")
+            return personas.get("app", "DataPilot"), personas.get("ai", "DataPilot AI")
     except Exception:
         pass
-    return "SnapAnalyst", "SnapAnalyst AI"
+    return "DataPilot", "DataPilot AI"
 
 
 # =============================================================================
@@ -59,7 +59,7 @@ def _load_fiscal_years() -> list[int]:
                 return years
     except Exception:
         pass
-    # Fallback: try datasets/snap/config.yaml directly
+    # Fallback: try datasets/data/config.yaml directly
     config_path = Path(__file__).resolve().parent.parent / "datasets" / "snap" / "config.yaml"
     try:
         with open(config_path) as f:

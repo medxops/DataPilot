@@ -1,7 +1,7 @@
 """
 API Client
 
-Handles all communication with the SnapAnalyst backend API.
+Handles all communication with the DataPilot backend API.
 This is a generic HTTP client that can be used by any frontend.
 """
 
@@ -51,7 +51,7 @@ async def call_api(
     endpoint: str, method: str = "GET", data: dict | None = None, timeout: float = API_TIMEOUT_DEFAULT
 ) -> dict:
     """
-    Make API call to SnapAnalyst backend.
+    Make API call to DataPilot backend.
 
     Args:
         endpoint: API endpoint (e.g., "/chat/query")
@@ -122,7 +122,7 @@ async def check_database_health() -> tuple[bool, str]:
             health = response.json()
             db_info = health.get("database", {})
             if db_info.get("connected", False):
-                return True, db_info.get("name", "snapanalyst_db")
+                return True, db_info.get("name", "datapilot_db")
             return False, "unknown"
     except Exception as e:
         logger.error(f"Database health check failed: {e}")

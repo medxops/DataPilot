@@ -1,6 +1,6 @@
-# Contributing to SnapAnalyst
+# Contributing to DataPilot
 
-Thank you for your interest in contributing to SnapAnalyst! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to DataPilot! This document provides guidelines and instructions for contributing.
 
 ## Table of Contents
 
@@ -39,8 +39,8 @@ By participating in this project, you agree to maintain a respectful and inclusi
 
 ```bash
 # Clone your fork
-git clone https://github.com/stperic/SnapAnalyst.git
-cd SnapAnalyst
+git clone https://github.com/medxops/datapilot.git
+cd datapilot
 
 # Create virtual environment
 python -m venv venv
@@ -133,7 +133,7 @@ ruff format .
 ### Project Structure
 
 ```
-SnapAnalyst/
+DataPilot/
 ├── src/                 # Core application code
 │   ├── api/            # FastAPI REST API
 │   ├── core/           # Configuration, logging, prompts

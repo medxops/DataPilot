@@ -59,7 +59,7 @@ from src.database.reference_models import (
 
 logger = get_logger(__name__)
 
-# Path to the single source of truth (now in datasets/snap/)
+# Path to the single source of truth (now in datasets/data/)
 DATA_MAPPING_PATH = Path(__file__).parent.parent.parent / "datasets" / "snap" / "data_mapping.json"
 
 

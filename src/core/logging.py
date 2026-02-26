@@ -1,5 +1,5 @@
 """
-SnapAnalyst Logging Configuration
+DataPilot Logging Configuration
 
 Provides centralized logging with:
 - Console output
@@ -116,7 +116,7 @@ def setup_logging(log_level: str | None = None) -> None:
     logging.getLogger("urllib3").setLevel(logging.WARNING)
 
     logging.debug(
-        f"SnapAnalyst logging initialized at {level} level "
+        f"DataPilot logging initialized at {level} level "
         f"(rotation: {settings.log_max_bytes / 1_000_000:.1f}MB, "
         f"keeping {settings.log_backup_count} backups)"
     )

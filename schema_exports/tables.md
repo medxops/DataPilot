@@ -1,4 +1,4 @@
-# SnapAnalyst Schema Export
+# DataPilot Schema Export
 
 Generated: 2026-01-14 00:01:48
 

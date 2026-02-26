@@ -1,1 +1,1 @@
-"""Integration tests for SnapAnalyst."""
+"""Integration tests for DataPilot."""

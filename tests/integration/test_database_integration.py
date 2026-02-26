@@ -137,7 +137,7 @@ def test_csv_path():
     # Use the test data file provided in tests/data
     csv_path = Path(__file__).parent.parent / "data" / "test.csv"
     if not csv_path.exists():
-        # Fallback to datasets/snap/data directory (new location)
+        # Fallback to datasets/data/data directory (new location)
         csv_path = Path(__file__).parent.parent.parent / "datasets" / "snap" / "data" / "qc_pub_fy2023.csv"
     return csv_path
 

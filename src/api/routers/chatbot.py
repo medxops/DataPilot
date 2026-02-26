@@ -1,5 +1,5 @@
 """
-SnapAnalyst Chatbot API Router
+DataPilot Chatbot API Router
 
 Natural language query interface for SQL generation and execution.
 """

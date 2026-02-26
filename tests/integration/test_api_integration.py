@@ -66,7 +66,7 @@ API003,NY,New York,202410,1200.00,1500.00,1200.00,4,4,2.1,1.0,1,28,2,1200.00,0.0
     csv_file = tmp_path / "api_test_data.csv"
     csv_file.write_text(csv_content)
 
-    # Create snapdata directory (now in datasets/snap/data/) and copy file
+    # Create snapdata directory (now in datasets/data/data/) and copy file
     snapdata_path = Path(settings.snapdata_path)
     snapdata_path.mkdir(parents=True, exist_ok=True)
 

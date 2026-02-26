@@ -20,9 +20,9 @@ from src.core.logging import get_logger
 logger = get_logger(__name__)
 
 REGISTRY_URL = "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
-REGISTRY_PATH = Path("datasets/snap/model_registry.json")
+REGISTRY_PATH = Path("datasets/data/model_registry.json")
 # In Docker the datasets live under /app
-REGISTRY_PATH_DOCKER = Path("/app/datasets/snap/model_registry.json")
+REGISTRY_PATH_DOCKER = Path("/app/datasets/data/model_registry.json")
 CACHE_MAX_AGE_SECONDS = 24 * 60 * 60  # 24 hours
 
 _registry: dict | None = None

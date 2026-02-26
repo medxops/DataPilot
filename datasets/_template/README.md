@@ -1,6 +1,6 @@
 # Dataset Template
 
-This is a template for creating new datasets in the SnapAnalyst multi-dataset architecture.
+This is a template for creating new datasets in the DataPilot multi-dataset architecture.
 
 ## Quick Start
 

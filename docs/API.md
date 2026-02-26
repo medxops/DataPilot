@@ -1,6 +1,6 @@
-# SnapAnalyst API Reference
+# DataPilot API Reference
 
-This document provides a reference for the SnapAnalyst REST API.
+This document provides a reference for the DataPilot REST API.
 
 ## Base URL
 
@@ -136,7 +136,7 @@ List available CSV files for loading.
       "loaded": true
     }
   ],
-  "snapdata_path": "/app/snapdata"
+  "snapdata_path": "/app/datadata"
 }
 ```
 
@@ -352,7 +352,7 @@ Reset Vanna training data and retrain.
   "reload_training_data": true
 }
 ```
-- `reload_training_data`: When true, reloads docs and query examples from `datasets/snap/training/`
+- `reload_training_data`: When true, reloads docs and query examples from `datasets/data/training/`
 
 ---
 

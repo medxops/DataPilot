@@ -1,23 +1,23 @@
-# SnapAnalyst
+# DataPilot
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.11+-green.svg)](https://www.python.org/downloads/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-blue.svg)](https://www.postgresql.org/)
-[![CI](https://github.com/stperic/SnapAnalyst/actions/workflows/ci.yml/badge.svg)](https://github.com/stperic/SnapAnalyst/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/stperic/SnapAnalyst/actions/workflows/codeql.yml/badge.svg)](https://github.com/stperic/SnapAnalyst/actions/workflows/codeql.yml)
+[![CI](https://github.com/medxops/datapilot/actions/workflows/ci.yml/badge.svg)](https://github.com/medxops/datapilot/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/medxops/datapilot/actions/workflows/codeql.yml/badge.svg)](https://github.com/medxops/datapilot/actions/workflows/codeql.yml)
 
 **AI-Powered SNAP Quality Control Data Analysis Platform**
 
 <p align="center">
-  <img src="media/SNAP%20Large.png" alt="SnapAnalyst Demo" width="240">
+  <img src="media/SNAP%20Large.png" alt="DataPilot Demo" width="240">
 </p>
 
-SnapAnalyst is an AI-powered platform that enables analysts, researchers, and policy makers to query complex SNAP (Supplemental Nutrition Assistance Program) Quality Control data using natural language and gain actionable insights—without needing SQL expertise. Ask questions in plain English and get instant, intelligent answers backed by SQL queries and AI-powered analysis.
+DataPilot is an AI-powered platform that enables analysts, researchers, and policy makers to query complex SNAP (Supplemental Nutrition Assistance Program) Quality Control data using natural language and gain actionable insights—without needing SQL expertise. Ask questions in plain English and get instant, intelligent answers backed by SQL queries and AI-powered analysis.
 
 ### Powered by Vanna.AI
 
-SnapAnalyst leverages [**Vanna.AI**](https://vanna.ai/) for intelligent natural language to SQL generation. Vanna is an open-source Python RAG (Retrieval-Augmented Generation) framework that trains on your database schema and generates accurate SQL queries from plain English questions.
+DataPilot leverages [**Vanna.AI**](https://vanna.ai/) for intelligent natural language to SQL generation. Vanna is an open-source Python RAG (Retrieval-Augmented Generation) framework that trains on your database schema and generates accurate SQL queries from plain English questions.
 
 - **Documentation**: [https://vanna.ai/docs](https://vanna.ai/docs/)
 - **GitHub**: [https://github.com/vanna-ai/vanna](https://github.com/vanna-ai/vanna)
@@ -25,7 +25,7 @@ SnapAnalyst leverages [**Vanna.AI**](https://vanna.ai/) for intelligent natural 
 
 ## Table of Contents
 
-- [Why SnapAnalyst?](#why-snapanalyst)
+- [Why DataPilot?](#why-datapilot)
 - [Features](#features)
 - [Use Cases](#use-cases)
 - [Quick Start with Docker](#quick-start-with-docker)
@@ -44,11 +44,11 @@ SnapAnalyst leverages [**Vanna.AI**](https://vanna.ai/) for intelligent natural 
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
-## Why SnapAnalyst?
+## Why DataPilot?
 
 **The Problem**: SNAP Quality Control data is incredibly valuable for policy analysis and research, but it's locked away in complex CSV files with 1,200+ columns, cryptic codes, and relationships that require deep domain knowledge to understand.
 
-**The Solution**: SnapAnalyst transforms this complexity into simplicity:
+**The Solution**: DataPilot transforms this complexity into simplicity:
 
 - **Ask in Plain English** - No SQL or technical knowledge required
 - **AI-Powered Analysis** - Get insights, not just data dumps
@@ -109,8 +109,8 @@ SnapAnalyst leverages [**Vanna.AI**](https://vanna.ai/) for intelligent natural 
 
 ```bash
 # Clone the repository
-git clone https://github.com/stperic/SnapAnalyst.git
-cd SnapAnalyst
+git clone https://github.com/medxops/datapilot.git
+cd datapilot
 
 # Copy environment template and configure (REQUIRED)
 cp .env.example .env
@@ -180,7 +180,7 @@ Click the **Settings** toolbar button in the header to access all configuration 
 
 ### AI Memory Stores
 
-SnapAnalyst has two separate AI memory stores, each managed through a self-contained sidebar panel accessible via **Settings**:
+DataPilot has two separate AI memory stores, each managed through a self-contained sidebar panel accessible via **Settings**:
 
 **Knowledge** — Powers Knowledge mode insights and documentation lookups
 
@@ -204,7 +204,7 @@ Open via Settings > Knowledge SQL to:
 - `.json` — Must contain `{"example_queries": [{"question": "...", "sql": "..."}]}`
 
 **Reset (available in the Knowledge SQL panel):**
-The Reset button clears all Vanna training data (DDL, docs, SQL pairs) and retrains DDL from the database schema. A **"Reload SNAP training data"** checkbox (checked by default) controls whether documentation and query examples from the training folder (`datasets/snap/training/`) are also reloaded automatically. Uncheck it to start with DDL only and add training data manually via Upload.
+The Reset button clears all Vanna training data (DDL, docs, SQL pairs) and retrains DDL from the database schema. A **"Reload SNAP training data"** checkbox (checked by default) controls whether documentation and query examples from the training folder (`datasets/data/training/`) are also reloaded automatically. Uncheck it to start with DDL only and add training data manually via Upload.
 
 ### Feedback-Driven Training
 
@@ -230,7 +230,7 @@ Vanna AI's behavior is driven by two configurable folders:
 2. **System prompts** (`SYSTEM_PROMPTS_PATH`) — LLM system prompts that set persona and domain rules
 
 ```
-datasets/snap/
+datasets/data/
 ├── training/                     # Training data (SQL_TRAINING_DATA_PATH)
 │   ├── business_context.md       # Domain knowledge & business rules
 │   └── query_examples.json       # Example question/SQL pairs
@@ -284,7 +284,7 @@ Return only the SQL query without markdown formatting.
 
 #### Replacing the SNAP Dataset
 
-To use SnapAnalyst with your own data:
+To use DataPilot with your own data:
 
 1. **Create your folders:**
    ```bash
@@ -367,8 +367,8 @@ The ETL pipeline transforms wide-format CSV (1,200+ columns) into a normalized s
 | `mv_demographic_profile` | SNAP participant demographics | age, race, citizenship, education |
 
 **Storage**: All data is stored in Docker volumes that persist between restarts:
-- `snapanalyst_postgres_data` - PostgreSQL database
-- `snapanalyst_snapanalyst_data` - Downloaded CSV files
+- `datapilot_postgres_data` - PostgreSQL database
+- `datapilot_datapilot_data` - Downloaded CSV files
 
 ### Data Flow
 
@@ -381,7 +381,7 @@ The ETL pipeline transforms wide-format CSV (1,200+ columns) into a normalized s
 
 ## Security
 
-SnapAnalyst is designed as a **self-hosted internal tool** for SNAP QC data analysis. The current security model reflects this:
+DataPilot is designed as a **self-hosted internal tool** for SNAP QC data analysis. The current security model reflects this:
 
 | Layer | Status | Notes |
 |-------|--------|-------|
@@ -415,8 +415,8 @@ Configuration is managed through a `.env` file in the project root (or environme
 | `CHAINLIT_PORT` | UI port mapping | `8001` |
 | `POSTGRES_PORT` | PostgreSQL port mapping | `5432` |
 | `VANNA_STORE_USER_QUERIES` | Enable feedback-driven training (thumbs up/down trains Vanna) | `True` |
-| `SQL_TRAINING_DATA_PATH` | Training data folder (docs, query examples) | `./datasets/snap/training` |
-| `SYSTEM_PROMPTS_PATH` | System prompts folder (SQL & KB prompts) | `./datasets/snap/prompts` |
+| `SQL_TRAINING_DATA_PATH` | Training data folder (docs, query examples) | `./datasets/data/training` |
+| `SYSTEM_PROMPTS_PATH` | System prompts folder (SQL & KB prompts) | `./datasets/data/prompts` |
 
 **Note**: Set `ENVIRONMENT=development` to enable API documentation at `/docs` and `/redoc`
 
@@ -585,7 +585,7 @@ curl "http://localhost:8000/api/v1/data/export/excel" -o data.xlsx
 ## Project Structure
 
 ```
-SnapAnalyst/
+DataPilot/
 ├── docker-compose.yml    # Docker orchestration
 ├── .env.example          # Environment template
 ├── docker/
@@ -598,7 +598,7 @@ SnapAnalyst/
 │   ├── etl/              # Data transformation pipeline
 │   └── core/             # Configuration, logging, prompts
 ├── ui/                   # Chainlit UI handlers
-├── datasets/snap/        # Dataset configuration and data
+├── datasets/data/        # Dataset configuration and data
 ├── scripts/              # Utility scripts
 │   ├── download_data.sh       # Data download script
 │   └── docker_init_data.py    # Docker initialization
@@ -647,12 +647,12 @@ Yes. Remove year filters or ask: "Compare FY2021 to FY2023".
 ## Data Source
 
 SNAP Quality Control data is downloaded from:
-- **Primary Source**: https://snapqcdata.net/data
+- **Primary Source**: https://dataqcdata.net/data
   - FY2021, FY2022, FY2023 ZIP archives
   - Automatically downloaded on first Docker startup
 
 Original data provided by the USDA Food and Nutrition Service:
-- https://www.fns.usda.gov/snap/quality-control-data
+- https://www.fns.usda.gov/data/quality-control-data
 
 ### Data Files
 
@@ -669,17 +669,17 @@ The data includes:
 - **Household Members**: Age, employment, income sources
 - **QC Errors**: Error findings, amounts, responsible agencies
 
-**Note on sampling weights**: The SNAP QC public use files are stratified random samples, not a census of all SNAP cases. Accurate national and state error rate calculations require applying FNS-provided sampling weights (`household_weight`). SnapAnalyst's pre-computed views (`mv_state_error_rates`, `mv_error_element_rollup`) use weighted calculations. Raw row counts and unweighted averages should not be used for policy conclusions.
+**Note on sampling weights**: The SNAP QC public use files are stratified random samples, not a census of all SNAP cases. Accurate national and state error rate calculations require applying FNS-provided sampling weights (`household_weight`). DataPilot's pre-computed views (`mv_state_error_rates`, `mv_error_element_rollup`) use weighted calculations. Raw row counts and unweighted averages should not be used for policy conclusions.
 
 ### Pre-populated Data
 
-SnapAnalyst comes pre-populated with the latest SNAP QC data from **FY2021, FY2022, and FY2023**. On first Docker startup, the system automatically downloads and loads this data into the PostgreSQL database, giving you immediate access to ~95,000 household records across all 53 SNAP reporting jurisdictions (50 states, DC, Guam, and the U.S. Virgin Islands).
+DataPilot comes pre-populated with the latest SNAP QC data from **FY2021, FY2022, and FY2023**. On first Docker startup, the system automatically downloads and loads this data into the PostgreSQL database, giving you immediate access to ~95,000 household records across all 53 SNAP reporting jurisdictions (50 states, DC, Guam, and the U.S. Virgin Islands).
 
 ### Adding Custom Data (Advanced Users)
 
 States and analysts can augment the federal QC public use data with their own datasets — state-specific error analysis, internal reviews, regional breakdowns, or any supplemental tables. Custom tables are loaded into the same PostgreSQL database alongside the public data, and the AI automatically learns to query across both. This means analysts can ask questions that combine federal and state data in a single query.
 
-SnapAnalyst automatically discovers and trains Vanna.AI on custom tables and views that follow naming conventions:
+DataPilot automatically discovers and trains Vanna.AI on custom tables and views that follow naming conventions:
 
 #### Naming Conventions
 
@@ -722,11 +722,11 @@ CREATE VIEW v_monthly_summary AS SELECT ...;
 CREATE VIEW snap_v_state_comparison AS SELECT ...;
 ```
 
-If you later want to restrict AI training to only certain prefixes, update `include_table_prefixes` in `datasets/snap/config.yaml`.
+If you later want to restrict AI training to only certain prefixes, update `include_table_prefixes` in `datasets/data/config.yaml`.
 
 #### Discovery Rules
 
-Table discovery is config-driven via `datasets/snap/config.yaml`:
+Table discovery is config-driven via `datasets/data/config.yaml`:
 
 ```yaml
 # Default: include ALL tables except excluded ones
@@ -790,7 +790,7 @@ After adding custom tables or views:
 1. **Add your schema to the database**:
    ```sql
    -- Connect to database
-   psql -U snapanalyst -d snapanalyst_db
+   psql -U datapilot -d datapilot_db
 
    -- Create your tables/views
    CREATE TABLE snap_my_analysis (...);
@@ -842,8 +842,8 @@ Then in the chat interface, open Settings > Knowledge SQL and click **Reset**, t
   - Enable by setting `ENVIRONMENT=development` in `.env`
   - In production, API docs are disabled for security
 - **Database Schema**: Open Settings > Database panel in the chat UI
-- **Issues**: [GitHub Issues](https://github.com/stperic/SnapAnalyst/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/stperic/SnapAnalyst/discussions)
+- **Issues**: [GitHub Issues](https://github.com/medxops/datapilot/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/medxops/datapilot/discussions)
 
 ## Contributing
 
@@ -859,11 +859,11 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ## Acknowledgments
 
-- **Data Source**: [USDA Food and Nutrition Service SNAP QC Database](https://www.fns.usda.gov/snap/quality-control-data)
+- **Data Source**: [USDA Food and Nutrition Service SNAP QC Database](https://www.fns.usda.gov/data/quality-control-data)
 
 ### Open Source Libraries
 
-SnapAnalyst is built with these excellent open source projects:
+DataPilot is built with these excellent open source projects:
 
 | Library | Purpose | License |
 |---------|---------|---------|

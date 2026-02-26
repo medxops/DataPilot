@@ -205,7 +205,7 @@ class DataExporter:
         from datasets import get_active_dataset
 
         ds_export = get_active_dataset()
-        ds_title = ds_export.display_name if ds_export else "SnapAnalyst"
+        ds_title = ds_export.display_name if ds_export else "DataPilot"
         title_cell.value = f"{ds_title} Data Export - README"
         title_cell.font = self.TITLE_FONT
         title_cell.fill = self.README_TITLE_FILL

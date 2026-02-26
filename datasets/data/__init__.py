@@ -4,7 +4,7 @@ SNAP QC Dataset Configuration
 Self-contained dataset package for SNAP Quality Control public use data.
 
 DATASET STRUCTURE:
-    datasets/snap/
+    datasets/data/
     ├── __init__.py           # This file - dataset configuration
     ├── config.yaml           # Dataset metadata
     ├── data_mapping.json     # Code lookups for enrichment (numeric codes → descriptions)
@@ -63,10 +63,10 @@ class SnapDatasetConfig(DatasetConfig):
     # =========================================================================
 
     def get_anonymous_email(self) -> str:
-        return "anonymous@snapanalyst.com"
+        return "anonymous@datapilot.com"
 
     def get_export_prefix(self) -> str:
-        return "snapanalyst"
+        return "datapilot"
 
     def get_code_lookup_names(self) -> list[str]:
         return [
@@ -133,7 +133,7 @@ class SnapDatasetConfig(DatasetConfig):
 
     def get_personas(self) -> dict[str, str]:
         """Get SNAP-specific persona names."""
-        return {"app": "SnapAnalyst", "ai": "SnapAnalyst AI"}
+        return {"app": "DataPilot", "ai": "DataPilot AI"}
 
     def get_example_questions(self) -> list[str]:
         """Get SNAP-specific example questions."""
@@ -340,7 +340,7 @@ class SnapDatasetConfig(DatasetConfig):
         Get path to data directory containing CSV files.
 
         Returns:
-            Path to datasets/snap/data/
+            Path to datasets/data/data/
         """
         return self.base_path / "data"
 

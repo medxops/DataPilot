@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Run integration tests for SnapAnalyst
+Run integration tests for DataPilot
 
 This script runs database and API integration tests.
 """
@@ -15,7 +15,7 @@ def run_tests():
     project_root = Path(__file__).parent.parent
 
     print("=" * 80)
-    print("SnapAnalyst Integration Tests")
+    print("DataPilot Integration Tests")
     print("=" * 80)
 
     # Set PYTHONPATH

@@ -1,10 +1,10 @@
 #!/bin/bash
-# SnapAnalyst - Download SNAP QC Data from USDA FNS
+# DataPilot - Download SNAP QC Data from USDA FNS
 # 
 # This script downloads the SNAP Quality Control public use files from
 # the USDA Food and Nutrition Service website.
 #
-# Data Source: https://www.fns.usda.gov/snap/quality-control-data
+# Data Source: https://www.fns.usda.gov/data/quality-control-data
 #
 # Usage:
 #   ./scripts/download_data.sh              # Download all available years
@@ -25,13 +25,13 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROJECT_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
 
 # Default data directory (can be overridden for Docker)
-DATA_DIR="${DATA_DIR:-$PROJECT_ROOT/datasets/snap/data}"
+DATA_DIR="${DATA_DIR:-$PROJECT_ROOT/datasets/data/data}"
 
 # SNAP QC Data URLs (loaded from config.yaml)
-# Note: These URLs may change. Update datasets/snap/config.yaml when they do.
-# Data Source: https://snapqcdata.net/data
+# Note: These URLs may change. Update datasets/data/config.yaml when they do.
+# Data Source: https://dataqcdata.net/data
 
-CONFIG_FILE="$PROJECT_ROOT/datasets/snap/config.yaml"
+CONFIG_FILE="$PROJECT_ROOT/datasets/data/config.yaml"
 
 if [ ! -f "$CONFIG_FILE" ]; then
     echo -e "${RED}Error: Config file not found: $CONFIG_FILE${NC}"
@@ -133,7 +133,7 @@ download_file() {
         if [ "$filesize" -lt 1000 ]; then
             echo -e "  ${RED}Error: Downloaded file is too small (${filesize} bytes).${NC}"
             echo -e "  ${RED}The URL may have changed. Please check:${NC}"
-            echo -e "  ${RED}https://snapqcdata.net/data${NC}"
+            echo -e "  ${RED}https://dataqcdata.net/data${NC}"
             rm -f "$zip_path"
             return 1
         fi

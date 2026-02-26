@@ -4,7 +4,7 @@ Action Handlers
 Handles button click actions (CSV download, reset, file load, feedback, etc.)
 Uses centralized message templates from src/core/prompts.py.
 
-All messages use APP_PERSONA (SnapAnalyst) - the app persona.
+All messages use APP_PERSONA (DataPilot) - the app persona.
 """
 
 from __future__ import annotations

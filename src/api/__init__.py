@@ -1,7 +1,7 @@
 """
 API Package
 
-FastAPI REST API for SnapAnalyst.
+FastAPI REST API for DataPilot.
 
 Subpackages:
 - routers: API route handlers

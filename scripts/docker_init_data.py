@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-SnapAnalyst Data Initialization Script
+DataPilot Data Initialization Script
 
 This script is run inside Docker to:
 1. Download SNAP QC ZIP files from snapqcdata.net (if not present)
@@ -56,8 +56,8 @@ if not DATABASE_URL:
 
 def load_data_files_config() -> dict[int, dict[str, str]]:
     """Load data file URLs from config.yaml and derive zip/csv patterns."""
-    # Resolve config path: /app/datasets/snap/config.yaml (Docker) or relative
-    config_path = Path("/app/datasets/snap/config.yaml")
+    # Resolve config path: /app/datasets/data/config.yaml (Docker) or relative
+    config_path = Path("/app/datasets/data/config.yaml")
     if not config_path.exists():
         config_path = Path(__file__).resolve().parent.parent / "datasets" / "snap" / "config.yaml"
 
@@ -281,7 +281,7 @@ def download_model_registry() -> str:
 
 def main():
     """Main initialization routine."""
-    print("[init] SnapAnalyst Data Initialization starting")
+    print("[init] DataPilot Data Initialization starting")
 
     # Ensure data directory exists
     DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -304,7 +304,7 @@ def main():
     print(f"[init] Step 1 Data files: {', '.join(file_statuses)}")
 
     if not available_files:
-        print("[init] WARNING: No data files available — download from https://snapqcdata.net/data")
+        print("[init] WARNING: No data files available — download from https://dataqcdata.net/data")
         return
 
     # Step 2: Initialize database schema

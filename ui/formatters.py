@@ -3,7 +3,7 @@ Formatters
 
 HTML and display formatting utilities for the Chainlit UI.
 Uses centralized message templates from src/core/prompts.py.
-Column display formats are loaded from datasets/snap/data_mapping.json.
+Column display formats are loaded from datasets/data/data_mapping.json.
 """
 
 from __future__ import annotations

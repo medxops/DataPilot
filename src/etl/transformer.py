@@ -1,5 +1,5 @@
 """
-SnapAnalyst Data Transformer - Optimized with List Comprehensions
+DataPilot Data Transformer - Optimized with List Comprehensions
 
 Uses list comprehensions and batch operations for 3-5x faster transformation.
 """

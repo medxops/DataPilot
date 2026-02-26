@@ -1,45 +1,45 @@
 """
-SnapAnalyst Custom Exceptions
+DataPilot Custom Exceptions
 """
 
 
-class SnapAnalystError(Exception):
-    """Base exception for all SnapAnalyst errors"""
+class DataPilotError(Exception):
+    """Base exception for all DataPilot errors"""
 
     pass
 
 
-class DatabaseError(SnapAnalystError):
+class DatabaseError(DataPilotError):
     """Database-related errors"""
 
     pass
 
 
-class ETLError(SnapAnalystError):
+class ETLError(DataPilotError):
     """ETL processing errors"""
 
     pass
 
 
-class ValidationError(SnapAnalystError):
+class ValidationError(DataPilotError):
     """Data validation errors"""
 
     pass
 
 
-class DataFileNotFoundError(SnapAnalystError):
+class DataFileNotFoundError(DataPilotError):
     """File not found errors"""
 
     pass
 
 
-class ConfigurationError(SnapAnalystError):
+class ConfigurationError(DataPilotError):
     """Configuration errors"""
 
     pass
 
 
-class LoadJobError(SnapAnalystError):
+class LoadJobError(DataPilotError):
     """Data loading job errors"""
 
     pass

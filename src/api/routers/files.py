@@ -1,5 +1,5 @@
 """
-SnapAnalyst Files API Router
+DataPilot Files API Router
 
 Endpoints for discovering and managing CSV files.
 """

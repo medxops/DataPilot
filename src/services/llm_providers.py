@@ -679,7 +679,7 @@ def train_vanna_with_ddl(force_retrain: bool = False):
                     logger.warning(f"Failed to train DDL {i + 1}: {e}")
         logger.debug(f"DDL training: {ddl_success} succeeded, {ddl_fail} failed out of {len(ddl_statements)}")
 
-        # Add all documentation files from datasets/snap/
+        # Add all documentation files from datasets/data/
         from src.services.kb_chromadb import _chunk_text
         from src.services.llm_training import get_documentation_files
 
@@ -733,7 +733,7 @@ def train_vanna(force_retrain: bool = False, reload_training_data: bool = False)
 
     Clears all existing training data, then retrains with DDL extracted from
     PostgreSQL. Optionally reloads documentation and query examples from the
-    training data folder (datasets/snap/training/).
+    training data folder (datasets/data/training/).
 
     Args:
         force_retrain: If True, re-train even if DDL already exists

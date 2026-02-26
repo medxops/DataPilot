@@ -1,5 +1,5 @@
 """
-SnapAnalyst Test Suite
+DataPilot Test Suite
 
 Subpackages:
 - unit: Unit tests for individual components

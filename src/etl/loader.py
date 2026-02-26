@@ -1,5 +1,5 @@
 """
-SnapAnalyst ETL Orchestrator
+DataPilot ETL Orchestrator
 
 Coordinates the complete ETL pipeline: Read → Transform → Validate → Write
 """

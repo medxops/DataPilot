@@ -1,5 +1,5 @@
 """
-SnapAnalyst Database Engine and Session Management
+DataPilot Database Engine and Session Management
 
 Schema Organization:
 - public: SNAP QC domain data (households, members, errors, reference tables)

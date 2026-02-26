@@ -1,5 +1,5 @@
 #!/bin/bash
-# SnapAnalyst - Stop All Services
+# DataPilot - Stop All Services
 # This script stops both backend and frontend services
 
 set -e  # Exit on error
@@ -10,7 +10,7 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-echo -e "${YELLOW}Stopping SnapAnalyst Services...${NC}"
+echo -e "${YELLOW}Stopping DataPilot Services...${NC}"
 echo ""
 
 # Track if any services were stopped
@@ -46,9 +46,9 @@ fi
 echo ""
 
 if [ "$STOPPED_ANY" = true ]; then
-    echo -e "${GREEN}All SnapAnalyst services stopped.${NC}"
+    echo -e "${GREEN}All DataPilot services stopped.${NC}"
 else
-    echo -e "${YELLOW}No SnapAnalyst services were running.${NC}"
+    echo -e "${YELLOW}No DataPilot services were running.${NC}"
 fi
 
 echo ""

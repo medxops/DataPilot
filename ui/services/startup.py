@@ -87,9 +87,9 @@ async def initialize_session():
             from datasets import get_active_dataset
 
             ds = get_active_dataset()
-            app_name = ds.get_personas().get("app", "snapanalyst").lower().replace(" ", "") if ds else "snapanalyst"
+            app_name = ds.get_personas().get("app", "datapilot").lower().replace(" ", "") if ds else "datapilot"
         except Exception:
-            app_name = "snapanalyst"
+            app_name = "datapilot"
         cl.user_session.set("user_id", f"anonymous@{app_name}.com")
         logger.warning("No authenticated user found, using anonymous")
 

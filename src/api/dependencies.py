@@ -1,5 +1,5 @@
 """
-SnapAnalyst FastAPI Dependencies
+DataPilot FastAPI Dependencies
 
 Shared dependencies for API endpoints.
 """

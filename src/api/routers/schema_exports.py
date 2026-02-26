@@ -40,7 +40,7 @@ def _get_export_prefix() -> str:
     from datasets import get_active_dataset
 
     ds = get_active_dataset()
-    return ds.get_export_prefix() if ds else "snapanalyst"
+    return ds.get_export_prefix() if ds else "datapilot"
 
 
 def load_json_file(file_path: Path) -> dict[str, Any]:

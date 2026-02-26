@@ -1,5 +1,5 @@
 """
-SnapAnalyst CSV Reader
+DataPilot CSV Reader
 
 Reads SNAP QC CSV files using Polars for performance.
 """

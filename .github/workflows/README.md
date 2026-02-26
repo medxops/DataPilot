@@ -1,6 +1,6 @@
 # GitHub Actions Workflows
 
-Simple CI/CD workflows for SnapAnalyst.
+Simple CI/CD workflows for DataPilot.
 
 ## Workflows
 
@@ -21,8 +21,8 @@ Security scanning:
 Add these badges to your README.md:
 
 ```markdown
-[![CI](https://github.com/stperic/SnapAnalyst/actions/workflows/ci.yml/badge.svg)](https://github.com/stperic/SnapAnalyst/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/stperic/SnapAnalyst/actions/workflows/codeql.yml/badge.svg)](https://github.com/stperic/SnapAnalyst/actions/workflows/codeql.yml)
+[![CI](https://github.com/medxops/datapilot/actions/workflows/ci.yml/badge.svg)](https://github.com/medxops/datapilot/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/medxops/datapilot/actions/workflows/codeql.yml/badge.svg)](https://github.com/medxops/datapilot/actions/workflows/codeql.yml)
 ```
 
 ## Optional: Codecov Integration
@@ -43,5 +43,5 @@ To enable coverage reporting:
 
 Then add badge:
 ```markdown
-[![Coverage](https://codecov.io/gh/stperic/SnapAnalyst/branch/main/graph/badge.svg)](https://codecov.io/gh/stperic/SnapAnalyst)
+[![Coverage](https://codecov.io/gh/medxops/datapilot/branch/main/graph/badge.svg)](https://codecov.io/gh/medxops/datapilot)
 ```

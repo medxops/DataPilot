@@ -1,5 +1,5 @@
 """
-SnapAnalyst Management API Router
+DataPilot Management API Router
 
 Endpoints for database management (reset, health check, etc.)
 """
@@ -34,7 +34,7 @@ def _get_dataset_models() -> tuple:
     # Fallback
     from src.database.models import Household, HouseholdMember, QCError
 
-    return "SnapAnalyst", ["households", "household_members", "qc_errors"], {
+    return "DataPilot", ["households", "household_members", "qc_errors"], {
         "households": Household, "household_members": HouseholdMember, "qc_errors": QCError,
     }
 

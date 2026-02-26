@@ -1,5 +1,5 @@
 """
-SnapAnalyst Source Package
+DataPilot Source Package
 
 Core application modules for SNAP QC data analysis.
 

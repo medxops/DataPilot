@@ -1,4 +1,4 @@
-# Welcome to SnapAnalyst AI!
+# Welcome to DataPilot AI!
 
 An AI-powered platform that enables analysts, researchers, and policy makers to query complex SNAP Quality Control data using natural language and gain insights—without needing SQL expertise.
 

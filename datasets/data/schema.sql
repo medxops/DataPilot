@@ -9,7 +9,7 @@
 -- 3. Example queries embedded in comments for Vanna training
 --
 -- Usage:
---   psql -d snapanalyst_db -f schema.sql
+--   psql -d datapilot_db -f schema.sql
 --
 -- ============================================================================
 

@@ -6,7 +6,7 @@ Scans SQL_TRAINING_DATA_PATH folder for training files:
 - .json files → parsed for question/SQL pairs ({"example_queries": [...]})
 - DDL comes from the live database, not from files
 
-Default folder: ./datasets/snap/training/
+Default folder: ./datasets/data/training/
 Override via env: SQL_TRAINING_DATA_PATH=./my_dataset/training
 """
 

@@ -1,5 +1,5 @@
 """
-Global Filter Manager for SnapAnalyst
+Global Filter Manager for DataPilot
 
 Provides per-user filtering that applies to all queries and exports.
 Filters are stored in database (persists across sessions).

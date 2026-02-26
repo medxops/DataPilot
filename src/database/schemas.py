@@ -1,5 +1,5 @@
 """
-SnapAnalyst Pydantic Schemas
+DataPilot Pydantic Schemas
 
 Data validation and serialization schemas for API requests/responses.
 """

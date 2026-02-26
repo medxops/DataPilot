@@ -10,7 +10,7 @@ different schemas, each with its own:
 - Vanna training data (DDL, examples, business context)
 
 ARCHITECTURE:
-- Each dataset lives in its own subdirectory (e.g., datasets/snap/)
+- Each dataset lives in its own subdirectory (e.g., datasets/data/)
 - A DatasetConfig class describes the dataset's structure
 - The DatasetRegistry discovers and manages available datasets
 - The application can switch between datasets or query across them

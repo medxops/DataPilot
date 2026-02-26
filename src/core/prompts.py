@@ -280,7 +280,7 @@ def _get_app_display_name() -> str:
             return ds.display_name
     except Exception:
         pass
-    return "SnapAnalyst"
+    return "DataPilot"
 
 
 MSG_SYSTEM_READY = f"🟢 **{_get_app_display_name()} is ready**"

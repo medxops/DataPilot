@@ -15,9 +15,9 @@ jobs:
       postgres:
         image: postgres:15-alpine
         env:
-          POSTGRES_USER: snapanalyst
+          POSTGRES_USER: datapilot
           POSTGRES_PASSWORD: test_password
-          POSTGRES_DB: snapanalyst_test_db
+          POSTGRES_DB: datapilot_test_db
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -51,7 +51,7 @@ jobs:
 
     - name: Run tests
       env:
-        DATABASE_URL: postgresql://snapanalyst:test_password@localhost:5432/snapanalyst_test_db
+        DATABASE_URL: postgresql://datapilot:test_password@localhost:5432/datapilot_test_db
         SECRET_KEY: test-secret-key
         ENVIRONMENT: test
         LLM_PROVIDER: ollama

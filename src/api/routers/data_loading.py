@@ -1,5 +1,5 @@
 """
-SnapAnalyst Data Loading API Router
+DataPilot Data Loading API Router
 
 Endpoints for loading SNAP QC CSV files into the database.
 """

@@ -1,4 +1,4 @@
-# SnapAnalyst Docker Build Ignore File
+# DataPilot Docker Build Ignore File
 # =====================================
 # Files and directories to exclude from Docker build context
 
@@ -58,7 +58,7 @@ logs/
 *.log
 
 # Data files (will be mounted as volume)
-datasets/snap/data/*.csv
+datasets/data/data/*.csv
 backups/
 
 # ChromaDB vector store

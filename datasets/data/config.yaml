@@ -23,16 +23,16 @@ source:
   name: "FNS SNAP Quality Control FY2023 Public Use File"
   format: wide_csv
   columns: 1200+  # Original wide format
-  url: "https://snapqcdata.net/data"
-  original_source: "https://www.fns.usda.gov/snap/quality-control-data"
+  url: "https://dataqcdata.net/data"
+  original_source: "https://www.fns.usda.gov/data/quality-control-data"
 
 # Available fiscal years and download URLs
 # To add a new year, add an entry to data_files below.
 # fiscal_years is derived from data_files keys automatically.
 data_files:
-  2023: "https://snapqcdata.net/sites/default/files/2025-03/qcfy2023_csv.zip"
-  2022: "https://snapqcdata.net/sites/default/files/2024-05/qcfy2022_csv.zip"
-  2021: "https://snapqcdata.net/sites/default/files/2024-05/qcfy2021_csv.zip"
+  2023: "https://dataqcdata.net/sites/default/files/2025-03/qcfy2023_csv.zip"
+  2022: "https://dataqcdata.net/sites/default/files/2024-05/qcfy2022_csv.zip"
+  2021: "https://dataqcdata.net/sites/default/files/2024-05/qcfy2021_csv.zip"
 
 fiscal_years:
   - 2021

@@ -1,5 +1,5 @@
 """
-SnapAnalyst Data Validator
+DataPilot Data Validator
 
 Validates data integrity and consistency.
 """

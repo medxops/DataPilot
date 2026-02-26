@@ -1,5 +1,5 @@
 """
-UI Package for SnapAnalyst Chainlit Application
+UI Package for DataPilot Chainlit Application
 
 This package contains ONLY UI-related code for the Chainlit interface.
 Business logic and services are in the src/ package.

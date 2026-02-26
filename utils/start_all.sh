@@ -1,5 +1,5 @@
 #!/bin/bash
-# SnapAnalyst - Start All Services
+# DataPilot - Start All Services
 # This script kills any existing instances and starts both backend and frontend
 
 set -e  # Exit on error
@@ -10,7 +10,7 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-echo -e "${YELLOW}🔧 SnapAnalyst - Starting Services${NC}"
+echo -e "${YELLOW}🔧 DataPilot - Starting Services${NC}"
 echo ""
 
 # Get the script directory

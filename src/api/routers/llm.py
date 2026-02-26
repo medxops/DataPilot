@@ -291,7 +291,7 @@ async def retrain_service() -> TrainingStatusResponse:
 
     This will:
     1. Reload the database schema from data_mapping.json
-    2. Reload query examples from datasets/snap/training/
+    2. Reload query examples from datasets/data/training/
     3. Retrain the LLM with updated information
 
     Use this after updating schema documentation or adding new query examples.
@@ -1258,7 +1258,7 @@ async def reset_vanna_training(request: VannaResetRequest):
 
     Clears all training data and retrains DDL from the database schema.
     If reload_training_data is True, also reloads documentation and query
-    examples from the training data folder (datasets/snap/training/).
+    examples from the training data folder (datasets/data/training/).
     """
     import asyncio
 

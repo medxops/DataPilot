@@ -72,7 +72,7 @@ async def schema_root() -> dict[str, Any]:
     from datasets import get_active_dataset
 
     ds = get_active_dataset()
-    ds_name = ds.display_name if ds else "SnapAnalyst"
+    ds_name = ds.display_name if ds else "DataPilot"
     available_tables = ds.get_main_table_names() if ds else ["households", "household_members", "qc_errors"]
     available_lookups = ds.get_code_lookup_names() if ds else []
 

@@ -164,7 +164,7 @@ export default function DatabasePanel() {
             const a = document.createElement("a")
             const ts = new Date().toISOString().replace(/[:.]/g, "").slice(0, 15)
             a.href = url
-            a.download = `snapanalyst_export_${ts}.xlsx`
+            a.download = `datapilot_export_${ts}.xlsx`
             document.body.appendChild(a)
             a.click()
             document.body.removeChild(a)
@@ -202,13 +202,12 @@ export default function DatabasePanel() {
 
             {/* Status message banner */}
             {statusMsg && (
-                <div className={`flex items-center gap-2 p-2 rounded text-xs ${
-                    statusMsg.type === "success" ? "bg-green-500/15 text-green-400" :
-                    statusMsg.type === "error" ? "bg-red-500/15 text-red-400" :
-                    "bg-blue-500/15 text-blue-400"
-                }`}>
+                <div className={`flex items-center gap-2 p-2 rounded text-xs ${statusMsg.type === "success" ? "bg-green-500/15 text-green-400" :
+                        statusMsg.type === "error" ? "bg-red-500/15 text-red-400" :
+                            "bg-blue-500/15 text-blue-400"
+                    }`}>
                     {statusMsg.type === "success" ? <CheckCircle className="h-3 w-3 shrink-0" /> :
-                     statusMsg.type === "error" ? <XCircle className="h-3 w-3 shrink-0" /> : null}
+                        statusMsg.type === "error" ? <XCircle className="h-3 w-3 shrink-0" /> : null}
                     <span>{statusMsg.text}</span>
                     <button onClick={() => setStatusMsg(null)} className="ml-auto opacity-60 hover:opacity-100">&times;</button>
                 </div>
@@ -225,13 +224,12 @@ export default function DatabasePanel() {
                     <div>
                         <div className="flex items-center justify-between">
                             <h3 className="text-sm font-semibold opacity-80">Database</h3>
-                            <Badge variant="outline" className={`text-[10px] px-1 py-0 ${
-                                connected ? "text-green-500 border-green-500" : "text-red-500 border-red-500"
-                            }`}>
+                            <Badge variant="outline" className={`text-[10px] px-1 py-0 ${connected ? "text-green-500 border-green-500" : "text-red-500 border-red-500"
+                                }`}>
                                 {connected ? "Connected" : "Disconnected"}
                             </Badge>
                         </div>
-                        <div className="text-xs opacity-50 mt-1">{db.name || "snapanalyst_db"}</div>
+                        <div className="text-xs opacity-50 mt-1">{db.name || "datapilot_db"}</div>
                     </div>
 
                     <Separator />

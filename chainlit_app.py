@@ -1,5 +1,5 @@
 """
-Chainlit Web UI for SnapAnalyst AI Chatbot
+Chainlit Web UI for DataPilot AI Chatbot
 
 This is the THIN UI LAYER - all business logic is in the ui/ package.
 This file only contains Chainlit decorators and routing.

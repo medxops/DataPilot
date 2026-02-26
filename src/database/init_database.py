@@ -74,8 +74,8 @@ def create_all_tables(drop_existing: bool = False) -> None:
 
     # Find schema.sql file
     schema_paths = [
-        Path("datasets/snap/schema.sql"),
-        Path("/app/datasets/snap/schema.sql"),  # Docker path
+        Path("datasets/data/schema.sql"),
+        Path("/app/datasets/data/schema.sql"),  # Docker path
     ]
 
     schema_file = None

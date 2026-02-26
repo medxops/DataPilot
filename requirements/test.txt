@@ -1,4 +1,4 @@
-# SnapAnalyst Test Dependencies
+# DataPilot Test Dependencies
 
 -r base.txt
 

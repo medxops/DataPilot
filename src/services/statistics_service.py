@@ -1,5 +1,5 @@
 """
-SnapAnalyst Statistics Service
+DataPilot Statistics Service
 
 Provides statistical analysis and aggregation functions.
 """

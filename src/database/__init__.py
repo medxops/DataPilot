@@ -1,5 +1,5 @@
 """
-SnapAnalyst Database Package
+DataPilot Database Package
 
 GOLD STANDARD ARCHITECTURE for Vanna.ai:
 -----------------------------------------

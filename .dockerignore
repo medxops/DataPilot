@@ -1,4 +1,4 @@
-# SnapAnalyst .dockerignore
+# DataPilot .dockerignore
 # Exclude files from Docker build context
 
 # Git

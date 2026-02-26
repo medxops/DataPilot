@@ -1,6 +1,6 @@
-# SnapAnalyst Docker Compose
+# DataPilot Docker Compose
 # 
-# This file runs the complete SnapAnalyst application:
+# This file runs the complete DataPilot application:
 # - PostgreSQL database
 # - FastAPI backend API
 # - Chainlit web UI
@@ -11,7 +11,7 @@
 #   docker-compose down               # Stop all services
 #   docker-compose down -v            # Stop and remove volumes
 
-name: snapanalyst
+name: datapilot
 
 services:
   # ==========================================================================
@@ -26,9 +26,9 @@ services:
         max-size: "10m"
         max-file: "3"
     environment:
-      POSTGRES_USER: snapanalyst
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-snapanalyst_dev_password}
-      POSTGRES_DB: snapanalyst_db
+      POSTGRES_USER: datapilot
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-datapilot_dev_password}
+      POSTGRES_DB: datapilot_db
       POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --no-instructions"
     # Reduce PostgreSQL log verbosity (suppress routine startup/checkpoint details)
     command: ["postgres", "-c", "log_min_messages=error", "-c", "log_checkpoints=off", "-c", "log_connections=off", "-c", "log_disconnections=off"]
@@ -37,7 +37,7 @@ services:
     ports:
       - "${POSTGRES_PORT:-5432}:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U snapanalyst -d snapanalyst_db"]
+      test: ["CMD-SHELL", "pg_isready -U datapilot -d datapilot_db"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -62,7 +62,7 @@ services:
         max-file: "3"
     environment:
       # Database
-      DATABASE_URL: postgresql://snapanalyst:${DATABASE_PASSWORD:-snapanalyst_dev_password}@postgres:5432/snapanalyst_db
+      DATABASE_URL: postgresql://datapilot:${DATABASE_PASSWORD:-datapilot_dev_password}@postgres:5432/datapilot_db
       
       # Application
       ENVIRONMENT: ${ENVIRONMENT:-production}
@@ -97,8 +97,8 @@ services:
       MAX_RESULT_COLUMNS: ${MAX_RESULT_COLUMNS:-10}
       
       # Vanna Configuration
-      SQL_TRAINING_DATA_PATH: ${SQL_TRAINING_DATA_PATH:-./datasets/snap/training}
-      SYSTEM_PROMPTS_PATH: ${SYSTEM_PROMPTS_PATH:-./datasets/snap/prompts}
+      SQL_TRAINING_DATA_PATH: ${SQL_TRAINING_DATA_PATH:-./datasets/data/training}
+      SYSTEM_PROMPTS_PATH: ${SYSTEM_PROMPTS_PATH:-./datasets/data/prompts}
       VANNA_CHROMADB_PATH: /app/chromadb
 
       # Disable ChromaDB telemetry and tqdm progress bars
@@ -118,7 +118,7 @@ services:
       OMP_PROC_BIND: "false"
       ORT_LOG_LEVEL: "ERROR"
     volumes:
-      - snapanalyst_data:/data
+      - datapilot_data:/data
       - ./docker/logs:/app/logs
       - chromadb_data:/app/chromadb
       - chroma_cache:/root/.cache/chroma  # Persist ONNX embedding model (79MB)
@@ -162,7 +162,7 @@ services:
       API_EXTERNAL_URL: ${API_EXTERNAL_URL:-http://localhost:8000}
       
       # Required by src.core.config (loaded by chainlit_app.py)
-      DATABASE_URL: postgresql://snapanalyst:${DATABASE_PASSWORD:-snapanalyst_dev_password}@postgres:5432/snapanalyst_db
+      DATABASE_URL: postgresql://datapilot:${DATABASE_PASSWORD:-datapilot_dev_password}@postgres:5432/datapilot_db
       SECRET_KEY: ${SECRET_KEY:-change-this-in-production}
       ENVIRONMENT: ${ENVIRONMENT:-production}
       LOG_LEVEL: ${LOG_LEVEL:-INFO}
@@ -181,7 +181,7 @@ services:
       # Chainlit settings
       CHAINLIT_HOST: 0.0.0.0
       CHAINLIT_PORT: 8001
-      CHAINLIT_AUTH_SECRET: ${CHAINLIT_AUTH_SECRET:-snapanalyst-default-auth-secret-change-in-production}
+      CHAINLIT_AUTH_SECRET: ${CHAINLIT_AUTH_SECRET:-datapilot-default-auth-secret-change-in-production}
       
       # Suppress verbose logging
       CHAINLIT_DEBUG: "false"
@@ -226,7 +226,7 @@ services:
       dockerfile: docker/Dockerfile
     container_name: data-loader
     environment:
-      DATABASE_URL: postgresql://snapanalyst:${DATABASE_PASSWORD:-snapanalyst_dev_password}@postgres:5432/snapanalyst_db
+      DATABASE_URL: postgresql://datapilot:${DATABASE_PASSWORD:-datapilot_dev_password}@postgres:5432/datapilot_db
       SNAPDATA_PATH: /data
       SECRET_KEY: ${SECRET_KEY:-init-only}
 
@@ -237,7 +237,7 @@ services:
       OMP_WAIT_POLICY: "PASSIVE"
       OMP_PROC_BIND: "false"
     volumes:
-      - snapanalyst_data:/data
+      - datapilot_data:/data
     depends_on:
       postgres:
         condition: service_healthy
@@ -251,7 +251,7 @@ services:
 volumes:
   postgres_data:
     driver: local
-  snapanalyst_data:
+  datapilot_data:
     driver: local
   chromadb_data:
     driver: local

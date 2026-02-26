@@ -1,5 +1,5 @@
 """
-SnapAnalyst FastAPI Application
+DataPilot FastAPI Application
 
 Main FastAPI application entry point.
 """
@@ -68,7 +68,7 @@ async def lifespan(app: FastAPI) -> AsyncGenerator:
     yield
 
     # Shutdown with timeout to prevent hanging on Ctrl+C / docker stop
-    logger.info("Shutting down SnapAnalyst...")
+    logger.info("Shutting down DataPilot...")
     try:
         from src.database.engine import dispose_engines
 

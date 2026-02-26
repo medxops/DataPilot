@@ -1,5 +1,5 @@
 """
-SnapAnalyst Query API Router
+DataPilot Query API Router
 
 Endpoints for executing SQL queries safely and providing schema information for LLM training.
 """
@@ -192,7 +192,7 @@ async def get_schema_documentation():
         inspector = inspect(engine)
         db_schema = _get_database_schema(inspector)
 
-        # Step 2: Load documentation from JSON file (now in datasets/snap/)
+        # Step 2: Load documentation from JSON file (now in datasets/data/)
         schema_path = Path(__file__).parent.parent.parent.parent / "datasets" / "snap" / "data_mapping.json"
 
         if not schema_path.exists():
@@ -222,7 +222,7 @@ def _get_database_schema(inspector) -> dict:
     """
     Query database for actual schema structure.
 
-    Uses the same table discovery config (datasets/snap/config.yaml) as Vanna training
+    Uses the same table discovery config (datasets/data/config.yaml) as Vanna training
     to exclude Chainlit internals, migration tables, and system prefixes.
 
     Args:
@@ -241,7 +241,7 @@ def _get_database_schema(inspector) -> dict:
         "tables": {},
         "relationships": {},
         "database": {
-            "name": "SnapAnalyst",
+            "name": "DataPilot",
             "description": "SNAP Quality Control database (queried from live database)",
             "source": "PostgreSQL Database",
         },

@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-SnapAnalyst is an AI-powered platform for querying SNAP (Supplemental Nutrition Assistance Program) Quality Control data using natural language. Users ask questions in plain English, the system generates SQL via Vanna AI (ChromaDB for RAG), executes against PostgreSQL, and returns results with AI-powered summaries.
+DataPilot is an AI-powered platform for querying SNAP (Supplemental Nutrition Assistance Program) Quality Control data using natural language. Users ask questions in plain English, the system generates SQL via Vanna AI (ChromaDB for RAG), executes against PostgreSQL, and returns results with AI-powered summaries.
 
 ## Build & Run Commands
 
@@ -91,12 +91,12 @@ Provider classes in `llm_providers.py`: `OpenAIVanna`, `AnthropicVanna`, `Ollama
 
 Training functions in `llm_providers.py`:
 - `train_vanna_with_ddl(force_retrain)` — Startup training (DDL + docs + query examples), called once on first use
-- `train_vanna(force_retrain, reload_training_data)` — Full reset: clears all data, retrains DDL. With `reload_training_data=True`, also reloads from `datasets/snap/training/`
+- `train_vanna(force_retrain, reload_training_data)` — Full reset: clears all data, retrains DDL. With `reload_training_data=True`, also reloads from `datasets/data/training/`
 
 Training data sources:
-- `datasets/snap/training/` — docs + question/SQL pairs for RAG
+- `datasets/data/training/` — docs + question/SQL pairs for RAG
 - `src/database/ddl_extractor.py` — DDL extraction from live database
-- Table discovery configured in `datasets/snap/config.yaml` (`include_table_prefixes`, `exclude_tables`, `exclude_table_prefixes`)
+- Table discovery configured in `datasets/data/config.yaml` (`include_table_prefixes`, `exclude_tables`, `exclude_table_prefixes`)
 
 ### Database Schema
 
@@ -122,7 +122,7 @@ Environment variables (`.env`):
 
 Settings loaded via pydantic in `src/core/config.py`. Computed properties `settings.sql_model` and `settings.kb_model` have provider-specific fallback defaults.
 
-Dataset config in `datasets/snap/config.yaml`: `data_files` (per-year download URLs, single source of truth for fiscal years), table inclusion/exclusion for Vanna training.
+Dataset config in `datasets/data/config.yaml`: `data_files` (per-year download URLs, single source of truth for fiscal years), table inclusion/exclusion for Vanna training.
 
 ## Chat Interface
 

@@ -1,5 +1,5 @@
 """
-SnapAnalyst Database Writer
+DataPilot Database Writer
 
 Enterprise-grade optimized writer using PostgreSQL bulk operations.
 Performance: ~5000-10000 records/second vs 300 records/second (33x faster)

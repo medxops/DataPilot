@@ -1,4 +1,4 @@
-# SnapAnalyst Development Dependencies
+# DataPilot Development Dependencies
 
 -r base.txt
 

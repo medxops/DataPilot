@@ -1,5 +1,5 @@
 """
-SnapAnalyst Configuration Management
+DataPilot Configuration Management
 """
 
 from __future__ import annotations
@@ -21,7 +21,7 @@ class Settings(BaseSettings):
     )
 
     # Application
-    app_name: str = "SnapAnalyst"
+    app_name: str = "DataPilot"
     app_version: str = "0.1.0"
     environment: str = Field(default="development", pattern="^(development|staging|production|test)$")
     debug: bool = False
@@ -34,7 +34,7 @@ class Settings(BaseSettings):
     api_workers: int = 1
 
     # Database Configuration
-    database_url: PostgresDsn = "postgresql://snapanalyst:snapanalyst_dev_password@localhost:5432/snapanalyst_db"
+    database_url: PostgresDsn = "postgresql://datapilot:datapilot_dev_password@localhost:5432/datapilot_db"
     database_pool_size: int = 5
     database_max_overflow: int = 10
     database_pool_timeout: int = 30
@@ -42,7 +42,7 @@ class Settings(BaseSettings):
 
     # Data Configuration
     # Default data path (overridden by active dataset config)
-    snapdata_path: str = "./datasets/snap/data"
+    snapdata_path: str = "./datasets/data/data"
     backup_path: str = "./backups"
     max_upload_size_mb: int = 500
 
@@ -75,7 +75,7 @@ class Settings(BaseSettings):
     # Monitoring & Logging
     sentry_dsn: str | None = None
     log_to_file: bool = True
-    log_file_path: str = "./logs/snapanalyst.log"
+    log_file_path: str = "./logs/datapilot.log"
     log_max_bytes: int = Field(default=10_000_000, description="Max log file size in bytes (default 10MB)")
     log_backup_count: int = Field(default=5, description="Number of backup log files to keep")
 
@@ -159,11 +159,11 @@ class Settings(BaseSettings):
     vanna_store_user_queries: bool = True  # Feedback-driven training: thumbs up/down trains Vanna
 
     # SQL training data folder — all .md/.txt loaded as documentation, all .json as question/SQL pairs
-    sql_training_data_path: str = "./datasets/snap/training"
+    sql_training_data_path: str = "./datasets/data/training"
     vanna_chromadb_path: str = "./chromadb"  # ChromaDB vector store location
 
     # System prompts folder — sql_system_prompt.txt, kb_system_prompt.txt
-    system_prompts_path: str = "./datasets/snap/prompts"
+    system_prompts_path: str = "./datasets/data/prompts"
 
     # Multi-Dataset Configuration
     # Supports multiple datasets with different schemas (e.g., public SNAP + state private data)
@@ -173,7 +173,7 @@ class Settings(BaseSettings):
     @property
     def resolved_data_path(self) -> str:
         """Resolve data path from active dataset, falling back to snapdata_path."""
-        if self.snapdata_path != "./datasets/snap/data":
+        if self.snapdata_path != "./datasets/data/data":
             return self.snapdata_path  # User override
         try:
             from datasets import get_active_dataset
@@ -188,7 +188,7 @@ class Settings(BaseSettings):
     @property
     def resolved_training_path(self) -> str:
         """Resolve training data path from active dataset, falling back to sql_training_data_path."""
-        if self.sql_training_data_path != "./datasets/snap/training":
+        if self.sql_training_data_path != "./datasets/data/training":
             return self.sql_training_data_path  # User override
         try:
             from datasets import get_active_dataset
@@ -203,7 +203,7 @@ class Settings(BaseSettings):
     @property
     def resolved_prompts_path(self) -> str:
         """Resolve prompts path from active dataset, falling back to system_prompts_path."""
-        if self.system_prompts_path != "./datasets/snap/prompts":
+        if self.system_prompts_path != "./datasets/data/prompts":
             return self.system_prompts_path  # User override
         try:
             from datasets import get_active_dataset

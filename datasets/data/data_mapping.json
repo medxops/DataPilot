@@ -1,6 +1,6 @@
 {
     "database": {
-        "name": "SnapAnalyst",
+        "name": "DataPilot",
         "description": "SNAP Quality Control database with normalized household, member, and QC error data. Data is structured to eliminate the wide-format CSV issue (1200+ columns reduced to ~100 columns across 3 tables).",
         "version": "1.1",
         "fiscal_years_available": [

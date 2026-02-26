@@ -117,7 +117,7 @@ class SchemaExporter:
             Markdown formatted string
         """
         md_lines = []
-        md_lines.append("# SnapAnalyst Schema Export")
+        md_lines.append("# DataPilot Schema Export")
         md_lines.append(f"\nGenerated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
 
         if export_type == "tables":
@@ -221,7 +221,7 @@ class SchemaExporter:
         )
 
         # Title
-        elements.append(Paragraph("SnapAnalyst Schema Documentation", title_style))
+        elements.append(Paragraph("DataPilot Schema Documentation", title_style))
         elements.append(Paragraph(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", styles["Normal"]))
         elements.append(Spacer(1, 0.3 * inch))
 

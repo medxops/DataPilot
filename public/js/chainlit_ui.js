@@ -221,7 +221,7 @@ function hideLogoOnLoginPage() {
     });
 
     // Hide app name text in header
-    ['SnapAnalyst', 'Snap Analyst', 'Assistant'].forEach(name => {
+    ['DataPilot', 'Data Pilot', 'Assistant'].forEach(name => {
         document.querySelectorAll('*').forEach(el => {
             const directText = Array.from(el.childNodes)
                 .filter(node => node.nodeType === Node.TEXT_NODE)
@@ -469,7 +469,7 @@ window.fetch = function (...args) {
         try {
             const body = JSON.parse(opts.body);
             if (body.sessionId) _chainlitSessionId = body.sessionId;
-        } catch (_) {}
+        } catch (_) { }
     }
     return _origFetch.apply(this, args);
 };
@@ -488,7 +488,7 @@ XMLHttpRequest.prototype.send = function (body) {
                 // Socket.IO auth is sometimes nested
                 if (parsed.auth?.sessionId) _chainlitSessionId = parsed.auth.sessionId;
             }
-        } catch (_) {}
+        } catch (_) { }
     }
     return _origXhrSend.apply(this, arguments);
 };
@@ -502,7 +502,7 @@ WebSocket.prototype.send = function (data) {
             const parsed = JSON.parse(jsonStr);
             if (parsed.sessionId) _chainlitSessionId = parsed.sessionId;
             if (parsed.auth?.sessionId) _chainlitSessionId = parsed.auth.sessionId;
-        } catch (_) {}
+        } catch (_) { }
     }
     return _origWsSend.apply(this, arguments);
 };

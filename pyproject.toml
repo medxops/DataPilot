@@ -1,5 +1,5 @@
 [project]
-name = "snapanalyst"
+name = "datapilot"
 version = "0.1.0"
 description = "AI-powered SNAP Quality Control data analysis platform with natural language query interface"
 readme = "README.md"
@@ -22,10 +22,10 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/stperic/SnapAnalyst"
-Documentation = "https://github.com/stperic/SnapAnalyst#readme"
-Repository = "https://github.com/stperic/SnapAnalyst"
-Issues = "https://github.com/stperic/SnapAnalyst/issues"
+Homepage = "https://github.com/medxops/datapilot"
+Documentation = "https://github.com/medxops/datapilot#readme"
+Repository = "https://github.com/medxops/datapilot"
+Issues = "https://github.com/medxops/datapilot/issues"
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]

@@ -1,6 +1,6 @@
 # Azure OpenAI Setup Guide
 
-This guide explains how to configure SnapAnalyst to use Azure OpenAI instead of standard OpenAI.
+This guide explains how to configure DataPilot to use Azure OpenAI instead of standard OpenAI.
 
 ---
 
@@ -197,7 +197,7 @@ Check Azure Portal → Your Resource → Metrics → Token Usage
 
 For issues specific to:
 - **Azure OpenAI Service:** Contact Azure Support
-- **SnapAnalyst Configuration:** Check application logs
+- **DataPilot Configuration:** Check application logs
 - **Vanna Integration:** See Vanna documentation
 
 ---
@@ -211,7 +211,7 @@ Complete `.env` example for Azure OpenAI:
 ENVIRONMENT=production
 
 # Database
-DATABASE_URL=postgresql://user:pass@postgres:5432/snapanalyst_db
+DATABASE_URL=postgresql://user:pass@postgres:5432/datapilot_db
 
 # LLM Provider - Azure OpenAI
 LLM_PROVIDER=azure_openai

@@ -288,7 +288,7 @@ class TestCheckDatabaseHealth:
         is_connected, db_name = await check_database_health()
 
         assert is_connected is True
-        assert db_name == "snapanalyst_db"
+        assert db_name == "datapilot_db"
 
     @pytest.mark.asyncio
     @patch("httpx.AsyncClient")

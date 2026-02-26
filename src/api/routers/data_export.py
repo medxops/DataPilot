@@ -114,7 +114,7 @@ async def export_data_to_excel(
     **Examples:**
     ```bash
     # Export default tables (backward compatible)
-    curl http://localhost:8000/api/v1/data/export/excel -o snapanalyst_data.xlsx
+    curl http://localhost:8000/api/v1/data/export/excel -o datapilot_data.xlsx
 
     # Export FY2023 only
     curl "http://localhost:8000/api/v1/data/export/excel?fiscal_year=2023" -o fy2023_data.xlsx
@@ -163,7 +163,7 @@ async def export_data_to_excel(
         from datasets import get_active_dataset
 
         ds = get_active_dataset()
-        export_prefix = ds.get_export_prefix() if ds else "snapanalyst"
+        export_prefix = ds.get_export_prefix() if ds else "datapilot"
         filename_parts = [f"{export_prefix}_data"]
         if current_filter.state:
             # Add state to filename if filtered
@@ -198,7 +198,7 @@ async def data_export_root():
     from datasets import get_active_dataset
 
     ds = get_active_dataset()
-    ds_name = ds.display_name if ds else "SnapAnalyst"
+    ds_name = ds.display_name if ds else "DataPilot"
 
     return {
         "name": f"{ds_name} Data Export API",

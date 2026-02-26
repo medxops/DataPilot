@@ -1,5 +1,5 @@
 """
-SnapAnalyst Database Models
+DataPilot Database Models
 
 Normalized schema for SNAP QC data.
 

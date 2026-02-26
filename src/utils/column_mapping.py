@@ -1,5 +1,5 @@
 """
-SnapAnalyst Column Mapping Configuration
+DataPilot Column Mapping Configuration
 
 Maps wide-format CSV columns (1,200+) to normalized database schema.
 Defines which columns are person-level (repeated 1-17) and error-level (repeated 1-9).

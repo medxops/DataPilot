@@ -10,7 +10,7 @@ We release patches for security vulnerabilities in the following versions:
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability within SnapAnalyst, please send an email to stperic@outlook.com. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within DataPilot, please send an email to stperic@outlook.com. All security vulnerabilities will be promptly addressed.
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
