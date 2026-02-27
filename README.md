@@ -7,13 +7,9 @@
 [![CI](https://github.com/medxops/datapilot/actions/workflows/ci.yml/badge.svg)](https://github.com/medxops/datapilot/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/medxops/datapilot/actions/workflows/codeql.yml/badge.svg)](https://github.com/medxops/datapilot/actions/workflows/codeql.yml)
 
-**AI-Powered SNAP Quality Control Data Analysis Platform**
+**AI-Powered Data Analysis Platform**
 
-<p align="center">
-  <img src="media/SNAP%20Large.png" alt="DataPilot Demo" width="240">
-</p>
-
-DataPilot is an AI-powered platform that enables analysts, researchers, and policy makers to query complex SNAP (Supplemental Nutrition Assistance Program) Quality Control data using natural language and gain actionable insights—without needing SQL expertise. Ask questions in plain English and get instant, intelligent answers backed by SQL queries and AI-powered analysis.
+DataPilot is an AI-powered platform that enables analysts, researchers, and policy makers to query complex data using natural language and gain actionable insights—without needing SQL expertise. Ask questions in plain English and get instant, intelligent answers backed by SQL queries and AI-powered analysis.
 
 ### Powered by Vanna.AI
 
@@ -45,8 +41,6 @@ DataPilot leverages [**Vanna.AI**](https://vanna.ai/) for intelligent natural la
 - [Acknowledgments](#acknowledgments)
 
 ## Why DataPilot?
-
-**The Problem**: SNAP Quality Control data is incredibly valuable for policy analysis and research, but it's locked away in complex CSV files with 1,200+ columns, cryptic codes, and relationships that require deep domain knowledge to understand.
 
 **The Solution**: DataPilot transforms this complexity into simplicity:
 
@@ -90,7 +84,6 @@ DataPilot leverages [**Vanna.AI**](https://vanna.ai/) for intelligent natural la
 - **State QC Teams**: Identify top error elements by dollar impact, prioritize corrective actions, track payment error rate trends year over year
 - **Policy Analysts**: Compare state performance against national benchmarks, analyze demographic patterns, study benefit adequacy
 - **Program Administrators**: Monitor error rates, export data for internal reporting and corrective action planning, augment federal data with state-specific datasets
-- **Researchers**: Query SNAP QC microdata without data preparation, explore income and eligibility patterns across fiscal years
 
 > **Note**: This release has been tested with **Azure OpenAI** only. OpenAI, Anthropic, and Ollama providers are supported but have not been fully validated. Please report any issues.
 
@@ -128,14 +121,6 @@ cp .env.example .env
 ```bash
 docker-compose up -d
 ```
-
-On first run, Docker will automatically:
-- Download SNAP QC ZIP files for FY2021, FY2022, FY2023 (~10MB compressed from snapqcdata.net)
-- Extract CSV files (~134MB total uncompressed)
-- Load all data into the PostgreSQL database
-- Start the API and Chat UI
-
-**Note**: First run takes 5-10 minutes for data download and database initialization. Subsequent starts are instant as data persists in Docker volumes.
 
 ### 3. Access the Application
 
@@ -203,9 +188,6 @@ Open via Settings > Knowledge SQL to:
 - `.md` / `.txt` — Added as documentation context for SQL generation
 - `.json` — Must contain `{"example_queries": [{"question": "...", "sql": "..."}]}`
 
-**Reset (available in the Knowledge SQL panel):**
-The Reset button clears all Vanna training data (DDL, docs, SQL pairs) and retrains DDL from the database schema. A **"Reload SNAP training data"** checkbox (checked by default) controls whether documentation and query examples from the training folder (`datasets/data/training/`) are also reloaded automatically. Uncheck it to start with DDL only and add training data manually via Upload.
-
 ### Feedback-Driven Training
 
 SQL query results include Chainlit's built-in thumbs up/down feedback icons. This feedback directly improves the AI's SQL generation over time:
@@ -259,10 +241,6 @@ The optional `explanation` field in query examples is stored for documentation p
 | `kb_system_prompt.txt` | System prompt for Knowledge mode insights. Sets the LLM's persona and response style. | Generic "data analyst" prompt |
 | `summary_system_prompt.txt` | System prompt for AI-powered result summaries. Controls how query results are summarized. | Generic summary prompt |
 
-#### Customizing System Prompts
-
-The system prompts are the most important files for SQL generation quality. The SNAP dataset includes a `sql_system_prompt.txt` with domain-specific rules (pre-computed views, tolerance thresholds, SQL conventions). When replacing the dataset, write your own prompts with your domain knowledge.
-
 **Example `sql_system_prompt.txt` for a custom dataset:**
 ```
 You are an expert healthcare data analyst and PostgreSQL specialist.
@@ -282,7 +260,7 @@ Generate accurate, executable SQL queries based on natural language questions.
 Return only the SQL query without markdown formatting.
 ```
 
-#### Replacing the SNAP Dataset
+#### Replacing the Dataset
 
 To use DataPilot with your own data:
 
@@ -307,7 +285,7 @@ To use DataPilot with your own data:
 
 5. **Load your data** into PostgreSQL and retrain via Settings > Knowledge SQL > Reset
 
-If you omit the prompt files or the prompts folder, generic defaults are used — the system never assumes SNAP-specific terminology.
+If you omit the prompt files or the prompts folder, generic defaults are used — the system never assumes specific data terminology.
 
 #### Runtime Prompt Customization
 
@@ -325,12 +303,6 @@ Open the Database panel from Settings to export data as Excel with comprehensive
 - Select specific fiscal years or export all data
 - Export includes README sheet, data sheets, code translation, and column definitions
 - Respects active state/year filters
-
-**Custom Table Support:**
-Users can export custom tables by name. Tables must follow naming conventions:
-- Custom tables: `snap_*` prefix (e.g., `snap_state_analysis`)
-- Reference tables: `ref_*` prefix (e.g., `ref_custom_codes`)
-- Views: `v_*` or `snap_v_*` prefix
 
 **CSV Download Button (Query Results)**
 After running a query, click the "CSV" button to export only that query's results as CSV. This is lighter and faster for ad-hoc analysis of specific queries.
@@ -351,20 +323,6 @@ After running a query, click the "CSV" button to export only that query's result
 │  └─────────────────┘  └─────────────────┘  └─────────────┘ │
 └─────────────────────────────────────────────────────────────┘
 ```
-
-### Database Schema
-
-The ETL pipeline transforms wide-format CSV (1,200+ columns) into a normalized schema:
-
-| Table | Description | Key Fields |
-|-------|-------------|------------|
-| `households` | Core case data | state_name, snap_benefit, income totals |
-| `household_members` | Individual member data | age, wages, employment status |
-| `qc_errors` | Quality control errors | element_code, nature_code, error_amount |
-| `ref_*` (25+ tables) | Code lookups | Maps codes to descriptions |
-| `mv_state_error_rates` | Pre-computed state error rates | payment_error_rate, overpayment_rate |
-| `mv_error_element_rollup` | Error element dollar impact | weighted_error_dollars by element |
-| `mv_demographic_profile` | SNAP participant demographics | age, race, citizenship, education |
 
 **Storage**: All data is stored in Docker volumes that persist between restarts:
 - `datapilot_postgres_data` - PostgreSQL database
